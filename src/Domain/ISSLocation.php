@@ -20,6 +20,9 @@ class ISSLocation implements ISSLocationInterface
         $this->reverseGeocodingService = $reverseGeocodingService;
     }
 
+    /**
+     * @return LocationDto
+     */
     public function getCurrentISSLocation(): LocationDto
     {
         $issPosition = $this->issPositionService->getCurrentIssPosition();

@@ -1,5 +1,4 @@
 <?php
-
 namespace mhyndle\ISSPosition\Infrastructure;
 
 use mhyndle\ISSPosition\Domain\GeoPositionDto;
@@ -20,6 +19,9 @@ class ISSPositionApi implements ISSPositionInterface
         $this->httpClient = $httpClient;
     }
 
+    /**
+     * @return GeoPositionDto
+     */
     public function getCurrentIssPosition(): GeoPositionDto
     {
         $apiResponse = $this->callApi();
@@ -27,6 +29,10 @@ class ISSPositionApi implements ISSPositionInterface
         return new GeoPositionDto($apiResponse['latitude'], $apiResponse['longitude']);
     }
 
+    /**
+     * @return array
+     * @throws \Exception
+     */
     private function callApi(): array
     {
         $response = $this->httpClient->request('GET', self::ISS_POSITION_DATA_URL);

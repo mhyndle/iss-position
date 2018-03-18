@@ -2,7 +2,6 @@
 
 namespace mhyndle\ISSPosition\Application\Controller;
 
-use mhyndle\ISSPosition\Domain\ISSLocation;
 use mhyndle\ISSPosition\Domain\ISSLocationInterface;
 use Twig_Environment;
 
@@ -18,9 +17,7 @@ class IndexController
      */
     private $issLocation;
 
-//    public function __construct(Twig_Environment $twig, ISSLocation $issLocation)
     public function __construct(Twig_Environment $twig, ISSLocationInterface $issLocation)
-//    public function __construct(Twig_Environment $twig)
     {
         $this->twig = $twig;
         $this->issLocation = $issLocation;
@@ -28,8 +25,11 @@ class IndexController
 
     public function __invoke()
     {
-        echo $this->twig->render('index.twig', [
+        echo $this->twig->render(
+            'index.twig',
+            [
             'issLocation' => $this->issLocation->getCurrentISSLocation(),
-        ]);
+            ]
+        );
     }
 }

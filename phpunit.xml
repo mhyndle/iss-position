@@ -1,0 +1,23 @@
+<phpunit
+    beStrictAboutTestsThatDoNotTestAnything="true"
+    beStrictAboutOutputDuringTests="true"
+    beStrictAboutChangesToGlobalState="true"
+    bootstrap="./vendor/autoload.php"
+>
+    <testsuites>
+        <testsuite name="service">
+            <directory phpVersion="7.2.0">tests/unit</directory>
+        </testsuite>
+    </testsuites>
+    <filter>
+        <whitelist>
+            <directory>src</directory>
+            <exclude>
+                <file>src/bootstrap.php</file>
+            </exclude>
+        </whitelist>
+    </filter>
+    <logging>
+        <log type="coverage-html" target="testReports/coverage.html" lowUpperBound="95" highLowerBound="100"/>
+    </logging>
+</phpunit>

@@ -1,0 +1,6 @@
+<VirtualHost *:80>
+    ServerName iss-position.loc
+    ServerAlias www.iss-position.loc
+
+    DocumentRoot "/var/www/iss-position/public"
+</VirtualHost>

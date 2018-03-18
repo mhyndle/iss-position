@@ -1,5 +1,4 @@
 <?php
-
 use DI\ContainerBuilder;
 use mhyndle\ISSPosition\Domain\ISSLocation;
 use mhyndle\ISSPosition\Domain\ISSLocationInterface;
@@ -9,7 +8,8 @@ use mhyndle\ISSPosition\Infrastructure\ISSPositionApi;
 use mhyndle\ISSPosition\Infrastructure\GoogleMapsApi;
 
 $containerBuilder = new ContainerBuilder();
-$containerBuilder->addDefinitions([
+$containerBuilder->addDefinitions(
+    [
     // Set up HTTP Client
     GuzzleHttp\ClientInterface::class => function () {
         $client = new GuzzleHttp\Client(['verify'=> false]);
@@ -30,7 +30,8 @@ $containerBuilder->addDefinitions([
         $loader = new Twig_Loader_Filesystem(__DIR__ . '/Application/Views');
         return new Twig_Environment($loader);
     },
-]);
+    ]
+);
 $container = $containerBuilder->build();
 
 return $container;

@@ -22,6 +22,10 @@ class GoogleMapsApi implements ReverseGeocodingInterface
         $this->httpClient = $httpClient;
     }
 
+    /**
+     * @param GeoPositionDto $geoPosition
+     * @return LocationDto
+     */
     public function getApproximateAddress(GeoPositionDto $geoPosition): LocationDto
     {
         $apiResponse = $this->callApi($geoPosition);
@@ -34,6 +38,11 @@ class GoogleMapsApi implements ReverseGeocodingInterface
         return new LocationDto($geoPosition->getLatitude(), $geoPosition->getLongitude(), $locationName);
     }
 
+    /**
+     * @param GeoPositionDto $geoPosition
+     * @return array
+     * @throws \Exception
+     */
     private function callApi(GeoPositionDto $geoPosition): array
     {
         $queryParams = [

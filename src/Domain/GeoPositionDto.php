@@ -35,5 +35,4 @@ class GeoPositionDto
     {
         return $this->longitude;
     }
-
 }
